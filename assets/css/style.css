@@ -1,0 +1,483 @@
+/* import du lien google font poppin */
+
+/* initialisation des valeurs css par defaut des navigateurs */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* declaration des variables css */
+html {
+  --var-bg-color: #7743e9;
+  --var-secondary-color: #6e51cf;
+  --var-text-color: #fff;
+  --var-text-color-dark: #333;
+  --var-bg-light: #f0f4ff;
+  --var-bg-dark: #d3c9f3;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--var-bg-light);
+  color: var(--var-text-color-dark);
+}
+
+/* style du header */
+header {
+  width: 100%;
+  height: 4rem;
+  /* hauteur de l'en-tete a 4*16px */
+  background-color: white;
+  padding: 0 2rem;
+  /* 0 pour vertical et 2rem pour horizontal*/
+  text-align: center;
+  /* Centre les textes dans header */
+  display: flex;
+  /* tous les enfants de l'element parent seront une seule ligne*/
+  justify-content: space-between;
+  /* marche avec display flex; oblige un espace entre les elements enfants*/
+  align-items: center;
+  /* centre les elements aussi bien en hauteur qu'en largeur */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* ombre de longueur 10px et d'epaisseur 1% */
+  position: sticky;
+  /* on souhaite que le header reste fixe quand on scrolle*/
+  top: 0;
+  /* on veut que le header reste collé en haut au moment du scroll*/
+  z-index: 1000;
+}
+
+/* style des elements de ul du navbar */
+/* selecteur descendant */
+header nav ul {
+  display: flex;
+  /* alignement des enfants sur la meme ligne*/
+  align-items: center;
+  /* centre les enfants; combine de flex */
+  list-style: none;
+  gap: 2rem;
+  /* goute entre les enfants */
+}
+
+/* style des elements a nav */
+header nav ul a {
+  text-decoration: none;
+  /* suppression des soulignements */
+  color: var(--var-text-color-dark);
+  font-weight: 500;
+  /* du texte un peu en gras */
+  transition: 0.3s;
+  /* transition sur tous les elements li pour les couleurs */
+}
+
+/* passage de la souris avec le pseudo classe hover */
+header nav ul a:hover {
+  color: var(--var-secondary-color);
+}
+
+/* style du bouton de header */
+header button {
+  background-color: var(--var-secondary-color);
+  color: var(--var-text-color);
+  border: none;
+  padding: 0.7rem 1rem;
+  /* padding vertical et horizontal*/
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Au passage du curseur */
+header button:hover {
+  background-color: var(--var-text-color);
+  color: var(--var-text-color-dark);
+  border: 1px solid var(--var-secondary-color);
+}
+
+/* ############### Mise en forme du main section ####################### */
+
+main {
+  padding: 2rem;
+}
+
+/* hero section */
+#hero {
+  width: 100%;
+  height: 70vh;
+  border-radius: 5px;
+  padding: 1rem;
+  background: linear-gradient(90deg,
+      var(--var-bg-color) 15%,
+      var(--var-secondary-color) 100%);
+
+  /* aligne les elements sur la meme ligne et on les centre */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#hero .gauche h1 {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 900;
+  color: var(--var-text-color);
+}
+
+#hero .gauche p {
+  font-size: clamp(1rem, 2vw, 1rem);
+  /*ideal pour les responsive design*/
+  color: var(--var-text-color);
+}
+
+#hero .gauche button {
+  background-color: var(--var-text-color);
+  color: var(--var-text-color-dark);
+  margin-top: 1.4rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.3rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#hero .droite {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#hero .droite img {
+  width: 100%;
+  height: 100%;
+  /* l'image contient tout l'espace possible et tout le contenu du container droite */
+  object-fit: cover;
+  /* z-index: 1000; */
+  /* L'image sera au premier plan */
+}
+
+#hero .droite .effets {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+#hero .droite .effets .cercle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  /* background-color: #d3c9f3; */
+  animation: animationCercle 4s ease-in infinite;
+  /* l'animation dure 4s de facon infinie */
+}
+
+.cercle:nth-child(1) {
+  background: linear-gradient(90deg,
+      var(--var-bg-color) 15%,
+      #9b8dc8 100%);
+  position: absolute;
+  right: 10px;
+  animation-delay: 1s;
+}
+
+.cercle:nth-child(2) {
+  background: linear-gradient(90deg,
+      var(--var-bg-color) 15%,
+      #9b8dc8 100%);
+  position: absolute;
+  left: 10px;
+  animation-delay: 0.5s;
+}
+
+.cercle:nth-child(3) {
+  background: linear-gradient(90deg,
+      var(--var-bg-color) 15%,
+      #9b8dc8 100%);
+  position: absolute;
+  /* bottom: 10px;
+  right: 10px; */
+  top: 100px;
+  right: 60px;
+  animation-delay: 4s;
+}
+
+/* les keyframes */
+@keyframes animationCercle {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(50px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ############ fin section hero ############ */
+
+/* ################# Mise en page de la section service ########### */
+#services {
+  margin-top: 2rem;
+}
+
+#services h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--var-text-color-dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.services-list {
+  display: flex;
+  /* gap: 1rem; */
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* a partir d'un certain niveau de l'ecran, les elements vont descendre automatiquement*/
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+#contact {
+  flex: 1;
+  /* chaque element occupe une part de l'ecran*/
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  position: relative;
+}
+
+.card-service .icon {
+  width: 50px;
+  height: 50px;
+  background-color: #ccb6fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  position: absolute;
+  top: -25px;
+}
+
+.card-service .icon i {
+  font-size: 1.3rem;
+  color: var(--var-text-color);
+}
+
+.card-service h3 {
+  margin-top: 1rem;
+}
+
+/* fin section services */
+
+/* ################### mise en forme section album ############## */
+#album {
+  margin-top: 2rem;
+}
+
+#album h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--var-text-color-dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#album .photo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* Nous voulons deux colonnes et chaque element occupe une fraction de l'ecran*/
+  gap: 1rem;
+}
+
+#album .photo img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+/* fin section album */
+
+/* ######### section contact */
+#contact {
+  margin-top: 3rem;
+  display: flex;
+  /* Tous les elements enfants seront alignés sur la meme ligne */
+  height: calc(100vh-200px);
+  /* la hauteur sera calculee en prenant la taille de l'ecran - 200px */
+  background-color: #fff;
+}
+
+#contact .partie1,
+.partie2 {
+  flex: 1;
+  /* oblige que les elements enfant aient la meme taille */
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  position: relative;
+  padding: 1rem;
+  /* height: 100%; */
+}
+
+#contact .partie1 {
+  background-color: #ccb6fa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#contact h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--var-text-color-dark);
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#contact .partie2 form {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.partie2 form input,
+textarea {
+  width: 100%;
+  padding: .8rem 1rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: .3s;
+}
+
+.partie2 form textarea {
+  height: 100px;
+}
+
+.partie2 form input:focus,
+textarea:focus {
+  border: 1px solid var(--var-bg-color);
+}
+
+.partie2 form button {
+  background: var(--var-bg-color);
+  color: var(--var-text-color);
+  border: none;
+  padding: 0.9rem 1rem;
+  border-radius: .3rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.partie2 form button:hover {
+  background-color: var(--var-secondary-color);
+}
+
+/* ############ mise ne forme de footer ################# */
+footer {
+  /* occupe toute la largeur disponibe de l'ecran */
+  width: 100%;
+  /* mettre une hauteur de 100px */
+  height: 100px;
+  background-color: var(--var-text-color);
+  margin-top: 2rem;
+
+  /* cela centre les elements du footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--var-text-color-dark);
+}
+
+/* ############### social media ################ */
+.reseaux {
+  /* on fixe l'element qui aura sa propre structure
+    et sera fixe selon la fenetre de notre navigateur,
+    d'ou les valeurs de positionnement right & bottom
+  */
+  position: fixed;
+  right: 3px;
+  bottom: 3rem;
+  background-color: #ccb6fa;
+  padding: 5px;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.reseaux .carte {
+  width: 30px;
+  height: 30px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* indique le temps de passage de l'etat actuel a l'etat nouveau */
+  transition: .3s;
+  cursor: pointer;
+}
+
+.carte:hover {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+/* ############ media queries ###################### */
+@media screen and (max-width: 768px) {
+  header nav {
+    display: none;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  #hero {
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 10px;
+  }
+
+  .gauche {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #hero .gauche h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  /* on centre les elements du gauche */
+  #hero .gauche {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* services */
+  .services-list {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  #contact {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+}
+
